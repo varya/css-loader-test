@@ -3,6 +3,7 @@ import watch from 'metalsmith-watch'
 import markdown from 'metalsmith-markdownit'
 import assets from 'metalsmith-assets'
 import permalinks from 'metalsmith-permalinks'
+import collections from 'metalsmith-collections'
 import copy from 'metalsmith-copy'
 
 import paths from '../config/paths'
@@ -27,7 +28,6 @@ export default new Metalsmith(paths.projectRoot)
       if (f.match(/^index.md/i)) {
         return f
       }
-      console.log(f)
       var fileName = f.split('.md')[0]
       return `${fileName}/index.md`
     }
@@ -35,6 +35,13 @@ export default new Metalsmith(paths.projectRoot)
   .use(devOnly(watch, {
     livereload: true,
     invalidateCache: true
+  }))
+  .use(collections({
+    articles: {
+      pattern: ['articles/*/*.md'],
+      sortBy: 'date',
+      reverse: true
+    }
   }))
   .use(permalinks({
     pattern: ':title',
