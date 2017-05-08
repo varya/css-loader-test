@@ -1,6 +1,6 @@
 {
-  "name": "metalsmith-webpack-suite",
-  "version": "0.0.0",
+  "name": "bridge-the-gap",
+  "version": "0.1.0",
   "description": "",
   "main": "",
   "scripts": {
@@ -21,19 +21,19 @@
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
-    "url": "https://github.com/axe312ger/metalsmith-webpack-suite.git",
+    "url": "https://github.com/frontendbabel/frontendbabel.github.com",
     "type": "git"
   },
   "keywords": [
     "metalsmith",
     "webpack"
   ],
-  "author": "Benedikt Rötsch <info@benedikt-roetsch.de>",
+  "author": "Varya Stepanova <mail@varya.me>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/axe312ger/metalsmith-webpack-suite/issues"
+    "url": "https://github.com/frontendbabel/frontendbabel.github.com/issues"
   },
-  "homepage": "https://github.com/axe312ger/metalsmith-webpack-suite#readme",
+  "homepage": "https://github.com/frontendbabel/frontendbabel.github.com#readme",
   "files": [
     "src",
     "dist",
@@ -70,7 +70,10 @@
     "extract-text-webpack-plugin": "v2.0.0-beta.4",
     "metalsmith": "^2.2.0",
     "metalsmith-assets": "^0.1.0",
+    "metalsmith-copy": "^0.3.0",
     "metalsmith-markdownit": "^0.4.0",
+    "metalsmith-paths": "^3.0.1",
+    "metalsmith-permalinks": "^0.5.0",
     "metalsmith-watch": "^1.0.3",
     "nodemon": "^1.11.0",
     "rimraf": "^2.5.4",
