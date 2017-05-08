@@ -2,9 +2,11 @@ import Metalsmith from 'metalsmith'
 import watch from 'metalsmith-watch'
 import markdown from 'metalsmith-markdownit'
 import assets from 'metalsmith-assets'
+import metadata from 'metalsmith-collection-metadata'
 import permalinks from 'metalsmith-permalinks'
 import collections from 'metalsmith-collections'
 import copy from 'metalsmith-copy'
+import reactTemplates from 'metalsmith-react-templates'
 
 import paths from '../config/paths'
 
@@ -43,12 +45,28 @@ export default new Metalsmith(paths.projectRoot)
       reverse: true
     }
   }))
+  .use(metadata({
+    'articles': {
+      rtemplate: 'Post.js',
+      documentType: 'article',
+      texts: require('../config/texts')
+    }
+  }))
   .use(permalinks({
     pattern: ':title',
     relative: false
   }))
   .use(markdown({
     html: true
+  }))
+  .use(reactTemplates({
+    pattern: '**/*.html',
+    babel: true,
+    directory: 'src/templates',
+    baseFile: 'base.html',
+    defaultTemplate: 'Default.js',
+    extension: null,
+    static: true
   }))
   .use(assets({
     source: './dist/assets',
